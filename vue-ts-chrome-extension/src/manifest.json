@@ -1,0 +1,28 @@
+{
+  "{{chrome}}.manifest_version": 3,
+  "{{firefox}}.manifest_version": 2,
+  "name": "Test Vue",
+  "version": "1.0.0",
+  "description": "Test Vite Plugin Extension with Vue",
+  "icons": {
+    "16": "icon/16.png",
+    "48": "icon/48.png",
+    "128": "icon/128.png"
+  },
+  "{{chrome}}.action": {
+    "default_popup": "src/popup/index.html"
+  },
+  "{{firefox}}.browser_action": {
+    "default_popup": "src/popup/index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["src/content-script/script.ts"]
+    }
+  ],
+  "background": {
+    "service_worker": "src/worker/index.ts"
+  },
+  "permissions": ["tabs", "{{firefox}}.<all_urls>", "{{chrome}}.activeTab"]
+}

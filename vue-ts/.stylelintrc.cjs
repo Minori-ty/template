@@ -6,4 +6,7 @@ module.exports = {
         'stylelint-config-recess-order',
         'stylelint-prettier',
     ],
+    rules: {
+        'max-nesting-depth': 2,
+    },
 }
