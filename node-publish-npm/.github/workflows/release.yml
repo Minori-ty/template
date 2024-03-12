@@ -1,0 +1,53 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  repository-projects: write
+
+jobs:
+  changelog:
+    if: ${{ github.repository_owner == 'minori-ty' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: check version
+        uses: EndBug/version-check@v2  # 当package.json version发生变化时，才会重新打包
+        id: check
+
+      - name: set version
+        id: version
+        run: |
+          echo "MY_VERSION=${{ steps.check.outputs.version }}" >> $GITHUB_ENV
+          echo "------------------------------"
+          echo "version is ${{ steps.check.outputs.version }}"
+          echo "------------------------------"
+
+      # - name: build
+      #   if: steps.check.outputs.changed == 'true'
+      #   uses: actions/setup-node@v4.0.2
+
+      - name: Install dependencies
+        if: steps.check.outputs.changed == 'true'
+        run: npm install
+
+      - name: Build
+        if: steps.check.outputs.changed == 'true'
+        run: npm run build
+
+      - name: Create Release
+        if: steps.check.outputs.changed == 'true'
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.check.outputs.version }}
+        with:
+          name: v${{ steps.check.outputs.version }}
+          tag_name: v${{ steps.check.outputs.version }}
