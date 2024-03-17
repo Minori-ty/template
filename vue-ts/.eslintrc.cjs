@@ -27,5 +27,25 @@ module.exports = {
         sourceType: 'module',
     },
     plugins: ['@typescript-eslint', 'vue'],
-    rules: {},
+    rules: {
+        'vue/attributes-order': [
+            'error',
+            {
+                order: [
+                    'DEFINITION',
+                    'LIST_RENDERING', // `v-for` 在这里
+                    'CONDITIONALS',
+                    'RENDER_MODIFIERS',
+                    'GLOBAL',
+                    'UNIQUE',
+                    'TWO_WAY_BINDING',
+                    'OTHER_DIRECTIVES',
+                    'OTHER_ATTR',
+                    'EVENTS',
+                    'CONTENT',
+                ],
+                alphabetical: false,
+            },
+        ],
+    },
 }

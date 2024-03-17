@@ -8,5 +8,6 @@ module.exports = {
     ],
     rules: {
         'max-nesting-depth': 2,
+        'declaration-no-important': true,
     },
 }

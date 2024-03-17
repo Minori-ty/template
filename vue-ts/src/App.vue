@@ -1,29 +1,15 @@
 <script setup lang="ts">
 import axios from 'axios'
-import HelloWorld from './components/HelloWorld.vue'
 console.log(axios)
-
-const obj = {
-    a: 1,
-}
-const a = obj.a
-a
-console.log(2)
 </script>
 
 <template>
     <div>
-        <a href="https://vitejs.dev" target="_blank">
-            <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://vuejs.org/" target="_blank">
-            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-        </a>
+        <div v-for="item in 4" :key="item" class="in">{{ item }}</div>
     </div>
-    <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .logo {
     width: 100px;
     height: 6em;
