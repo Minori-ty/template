@@ -88,6 +88,9 @@ devDependencies:
   vite-plugin-compression:
     specifier: ^0.5.1
     version: 0.5.1(vite@5.1.4)
+  vite-plugin-env-parse:
+    specifier: ^1.0.8
+    version: 1.0.8(vite@5.1.4)
   vite-plugin-eslint:
     specifier: ^1.8.1
     version: 1.8.1(eslint@8.57.0)(vite@5.1.4)
@@ -3450,6 +3453,14 @@ packages:
       vite: 5.1.4(@types/node@20.11.24)(sass@1.71.1)
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /vite-plugin-env-parse@1.0.8(vite@5.1.4):
+    resolution: {integrity: sha512-b7ntgTwaV2L24GEU+aO8zHdjc50rV+F1CRnVlFZ4kDlZBz21zbkJ3k3+NtsvMy4w2pQDZirXWsszbCGZGJsIpw==}
+    peerDependencies:
+      vite: '*'
+    dependencies:
+      vite: 5.1.4(@types/node@20.11.24)(sass@1.71.1)
     dev: true
 
   /vite-plugin-eslint@1.8.1(eslint@8.57.0)(vite@5.1.4):

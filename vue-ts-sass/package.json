@@ -41,6 +41,7 @@
         "typescript": "^5.3.3",
         "vite": "^5.1.4",
         "vite-plugin-compression": "^0.5.1",
+        "vite-plugin-env-parse": "^1.0.8",
         "vite-plugin-eslint": "^1.8.1",
         "vite-plugin-inspect": "^0.8.3",
         "vite-plugin-progress": "^0.0.7",

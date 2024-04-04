@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import axios from 'axios'
-console.log(axios)
+import.meta.env.BASE_URL
+console.log(import.meta.env)
 </script>
 
 <template>
