@@ -1,3 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="./node_modules/eslint-typegen/dist/index.d.ts" />
+/**
+ * @type {import("eslint").Linter.FlatConfig}
+ */
 module.exports = {
     env: {
         browser: true,
