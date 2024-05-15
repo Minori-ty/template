@@ -10,7 +10,8 @@ use axum::{routing::get, Router};
 async fn main() {
     let app = Router::new()
         .route("/", get(handler))
-        .merge(routers::user::user_router());
+        .merge(routers::user::user_router())
+        .merge(routers::admin::admin_router());
 
     let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
         .await
