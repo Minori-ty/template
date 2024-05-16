@@ -6,12 +6,14 @@ use crate::types::user::Data;
 pub fn get_user_list() -> Response<Vec<User>> {
     let mut user_list = vec![];
     let user = User {
+        id: String::from("1"),
         age: 20,
         sex: Sex::Male,
         username: String::from("张三"),
     };
     user_list.push(user);
     let user2 = User {
+        id: String::from("1"),
         age: 20,
         sex: Sex::Male,
         username: String::from("李四"),
@@ -21,8 +23,9 @@ pub fn get_user_list() -> Response<Vec<User>> {
     return res;
 }
 
-pub fn create_user() -> Response<User> {
+pub fn create_user(id: String) -> Response<User> {
     let user = User {
+        id,
         age: 20,
         sex: Sex::Male,
         username: String::from("张三"),
@@ -35,12 +38,14 @@ pub fn create_user() -> Response<User> {
 pub fn delete_user_list() -> Data {
     let mut user_list = vec![];
     let user = User {
+        id: String::from("1"),
         age: 20,
         sex: Sex::Male,
         username: String::from("张三"),
     };
     user_list.push(user);
     let user2 = User {
+        id: String::from("1"),
         age: 20,
         sex: Sex::Male,
         username: String::from("李四"),

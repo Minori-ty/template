@@ -2,6 +2,7 @@ use serde::{Deserialize, Serialize, Serializer};
 
 #[derive(Serialize, Deserialize)]
 pub struct User {
+    pub id: String,
     pub username: String,
     pub age: u8,
     #[serde(serialize_with = "serialize_sex")]
