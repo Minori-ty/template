@@ -8,13 +8,20 @@ mod types;
 use axum::Router;
 use routers::{admin, user};
 use std::net::SocketAddr;
+use tower_http::trace::TraceLayer;
+use tracing::Level;
+use tracing_subscriber::fmt::Subscriber;
 
 #[tokio::main]
 async fn main() {
+    let subscriber = Subscriber::builder().with_max_level(Level::DEBUG).finish();
+    tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
+
     let app = Router::new()
         .merge(user::user_router())
         .merge(admin::admin_router())
-        .layer(middlewares::cors::cors());
+        .layer(middlewares::cors::cors())
+        .layer(TraceLayer::new_for_http());
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
 
