@@ -21,21 +21,30 @@ class _SubState extends State<Sub> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-          itemBuilder: (context, index) {
-            return Text(
-              _list[index].name,
-              textAlign: TextAlign.center,
-            );
-          },
-          itemCount: _list.length),
+      appBar: AppBar(),
+      body: Center(
+        child: _list.isNotEmpty
+            ? ListView.builder(
+                itemBuilder: (context, index) {
+                  return Text(
+                    _list[index].name,
+                    textAlign: TextAlign.center,
+                  );
+                },
+                itemCount: _list.length)
+            : const Text("失败了"),
+      ),
     );
   }
 
   Future<void> _getList() async {
-    final UserList data = await getUserList();
-    setState(() {
-      _list = data.list.toList();
-    });
+    try {
+      final UserList data = await getUserList();
+      setState(() {
+        _list = data.list.toList();
+      });
+    } catch (e) {
+      // throw Exception("获取用户列表失败");
+    }
   }
 }
