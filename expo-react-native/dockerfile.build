@@ -1,0 +1,5 @@
+FROM shouyeren/expo-java17
+
+WORKDIR /WWW/APP/
+
+ADD ./ /WWW/APP/

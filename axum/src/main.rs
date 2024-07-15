@@ -1,5 +1,6 @@
 mod config;
 mod controllers;
+mod db;
 mod middlewares;
 mod models;
 mod routers;
@@ -16,6 +17,8 @@ use tracing_subscriber::fmt::Subscriber;
 
 #[tokio::main]
 async fn main() {
+    db::main::main();
+
     let subscriber = Subscriber::builder().with_max_level(Level::DEBUG).finish();
     tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
 

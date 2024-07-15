@@ -1,0 +1,13 @@
+version: '3'
+name: build
+services:
+    build:
+        build:
+            context: .
+            dockerfile: dockerfile.build
+        image: app
+        container_name: app
+        tty: true
+        stdin_open: true
+        volumes:
+            - ./:/WWW/APP/
