@@ -44,7 +44,7 @@ class _SubState extends State<Sub> {
         _list = data.list.toList();
       });
     } catch (e) {
-      // throw Exception("获取用户列表失败");
+      throw Exception("获取用户列表失败");
     }
   }
 }

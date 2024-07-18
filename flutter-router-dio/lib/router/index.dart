@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:router/pages/detail.dart';
 import 'package:router/pages/home.dart';
@@ -17,10 +18,14 @@ GoRouter router = GoRouter(
         builder: (context, state) => const Sub(),
       ),
       GoRoute(
-        path: "detail",
-        builder: (context, state) => const Detail(),
-      ),
-      GoRoute(path: "login", builder: (context, state) => const Login())
+          path: "detail",
+          // builder: (context, state) => const Detail(),
+          pageBuilder: (context, state) =>
+              downAndPull(context, state, const Detail())),
+      GoRoute(
+          path: "login",
+          pageBuilder: (context, state) =>
+              downAndPull(context, state, const Login()))
     ]),
   ],
   redirect: (context, state) {
@@ -32,3 +37,24 @@ GoRouter router = GoRouter(
     return null;
   },
 );
+
+/// 页面升起
+Page<dynamic> downAndPull(
+    BuildContext context, GoRouterState state, Widget page) {
+  return CustomTransitionPage(
+    child: page,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
+}
