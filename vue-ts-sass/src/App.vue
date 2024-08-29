@@ -1,11 +1,40 @@
 <script setup lang="ts">
 import.meta.env.BASE_URL
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { getLocale, i18n } from './locales'
+
+const { locale } = useI18n()
+const currentLocale = ref(locale.value)
+const options = ref<
+    {
+        value: string
+        label: string
+    }[]
+>([])
+
+async function init() {
+    options.value = await getLocale()
+}
+init()
+function change(value: 'zh-CN') {
+    console.log(value)
+    i18n.global.locale.value = value
+}
 console.log(import.meta.env.VITE_BASE_URL)
 </script>
 
 <template>
     <div>
         <div v-for="item in 4" :key="item" class="in">{{ item }}</div>
+    </div>
+    <div>
+        <h1>vue-i18n</h1>
+        <el-select v-model="currentLocale" @change="change">
+            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+        </el-select>
+        <h2>{{ $t('login') }}</h2>
+        <h2>{{ $t('about') }}</h2>
     </div>
 </template>
 
