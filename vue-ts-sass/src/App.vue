@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import.meta.env.BASE_URL
+import { getLocale, i18n } from '@/locales'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getLocale, i18n } from './locales'
 
 const { locale } = useI18n()
 const currentLocale = ref(locale.value)
