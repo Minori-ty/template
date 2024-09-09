@@ -24,6 +24,9 @@ instance.interceptors.response.use(
         if (res.data.code === HttpCode.NotFound) {
             eventBus.emit(EventName.NotFound)
         }
+        if (res.data.code === HttpCode.ServerError) {
+            eventBus.emit(EventName.ServerError)
+        }
         return res
     },
     err => {
