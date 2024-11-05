@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:router/pages/detail.dart';
+import 'package:router/pages/Detail/index.dart';
 import 'package:router/pages/home.dart';
 import 'package:router/pages/app_root.dart';
+import 'package:router/pages/screen/index.dart';
 import 'package:router/pages/sub.dart';
 import 'package:router/store/index.dart';
 import 'package:provider/provider.dart';
 import 'package:router/pages/login.dart';
 
 GoRouter router = GoRouter(
-  initialLocation: "/",
+  initialLocation: "/lottie",
   routes: [
+    GoRoute(path: "/lottie", builder: (context, state) => const Screen()),
     GoRoute(path: "/", builder: (context, state) => const AppRoot(), routes: [
       GoRoute(path: "home", builder: (context, state) => const Home()),
       GoRoute(

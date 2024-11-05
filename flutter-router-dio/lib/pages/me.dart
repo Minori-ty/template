@@ -5,8 +5,20 @@ class Me extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("我的"),
+    return const Column(
+      children: [
+        Text(
+          "1",
+          style: TextStyle(),
+        ),
+        SizedBox(
+          child: Text("2"),
+        ),
+        Text(
+          "2",
+          style: TextStyle(),
+        ),
+      ],
     );
   }
 }

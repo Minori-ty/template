@@ -9,6 +9,7 @@ Dio axios = Dio(BaseOptions(
     receiveTimeout: const Duration(seconds: timeOut),
     connectTimeout: const Duration(seconds: timeOut)));
 
+/// 获取用户列表
 Future<UserList> getUserList() async {
   Response res = await axios.get("/list");
   return UserList.fromJson(res.data);

@@ -9,34 +9,41 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginStore = Provider.of<LoginStore>(context);
-    return Center(
-      child: Column(
-        children: [
-          ElevatedButton(
-            child: const Text("登录"),
-            onPressed: () {
-              loginStore.setIsLogin(true);
-            },
-          ),
-          ElevatedButton(
-            child: const Text("清除登录"),
-            onPressed: () {
-              loginStore.setIsLogin(false);
-            },
-          ),
-          ElevatedButton(
-            child: const Text("点击跳转到Sub"),
-            onPressed: () {
-              context.go("/sub");
-            },
-          ),
-          ElevatedButton(
-            child: const Text("点击跳转到Detail"),
-            onPressed: () {
-              context.go("/detail");
-            },
-          ),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("首页"),
+        centerTitle: true,
+        backgroundColor: Colors.grey,
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+              child: const Text("登录"),
+              onPressed: () {
+                loginStore.setIsLogin(true);
+              },
+            ),
+            ElevatedButton(
+              child: const Text("清除登录"),
+              onPressed: () {
+                loginStore.setIsLogin(false);
+              },
+            ),
+            ElevatedButton(
+              child: const Text("点击跳转到Sub"),
+              onPressed: () {
+                context.go("/sub");
+              },
+            ),
+            ElevatedButton(
+              child: const Text("点击跳转到Detail"),
+              onPressed: () {
+                context.go("/detail");
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
