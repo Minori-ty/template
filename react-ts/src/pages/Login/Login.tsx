@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import useToken from '../../store'
 
 export default function Index() {
-    const push = useNavigate()
+    const navigate = useNavigate()
     const setToken = useToken((state) => state.setToken)
     function onSubmit() {
         setToken('ABC')
-        push('/')
+        navigate('/')
     }
     useEffect(() => {
         axios.get('http://127.0.0.1:5000/user')

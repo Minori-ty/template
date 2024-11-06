@@ -1,6 +1,5 @@
-import { useRoutes } from 'react-router-dom'
-import router from './router'
+import React from 'react'
 
 export default function App() {
-    return useRoutes(router)
+    return <div>App</div>
 }

@@ -1,15 +1,19 @@
-import React from 'react';
-import {StatusBar, Text, View} from 'react-native';
-import Loading from './assets/loading.svg';
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Home from './src/pages/Home';
+import Me from './src/pages/Me';
+import {RootStackParamList} from './src/routers/index.d';
 
-function App() {
+const Tab = createBottomTabNavigator<RootStackParamList>();
+
+export default function App() {
   return (
-    <View>
-      <Text>1111</Text>
-      <Loading width={120} height={40} />
-      <StatusBar />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="/Home" component={Home} />
+        <Tab.Screen name="/Me" component={Me} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-export default App;
